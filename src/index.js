@@ -21,10 +21,42 @@ const books = [
 const BookList = () => {
   return (
     <section className="booklist">
+      <EventExamples />
       {books.map((book) => {
         // const { img, title, author, id } = book;
         return <Book {...book} key={book.id} />;
       })}
+    </section>
+  );
+};
+
+const EventExamples = () => {
+  const handleFormInput = (e) => {
+    console.log(e.target);
+    console.log(e.target.name);
+    console.log(e.target.value);
+    console.log("handle form input");
+  };
+  const handleButtonClick = () => {
+    alert("handle form input");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("form input");
+  };
+  return (
+    <section>
+      <form onSubmit={handleSubmit}>
+        <h2>Typical Form</h2>
+        <input
+          type="text"
+          name="example"
+          onChange={handleFormInput}
+          style={{ margin: "1rem 0" }}
+        />
+      </form>
+      <button onClick={handleButtonClick}>click me</button>
     </section>
   );
 };
